@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoService} from '../../services/todo.service';
+import {Task} from '../../model/task.model';
 
 @Component({
   selector: 'app-form-task',
   templateUrl: './form-task.component.html',
-  styleUrls: ['./form-task.component.css']
+  styleUrls: ['./form-task.component.css'],
+  providers: [TodoService]
 })
-export class FormTaskComponent implements OnInit {
+export class FormTaskComponent {
+  constructor(private todoService: TodoService) { }
+
 
   priorities: string[] = ['Low', 'Medium', 'High'];
 
@@ -16,17 +20,16 @@ export class FormTaskComponent implements OnInit {
   statusMessage = '';
 
   onAddTask(): void {
-    if (this.title === '' || this.description === ''){
+    if (this.title === '' || this.description === '' || this.priority === ''){
       this.statusMessage = 'Fields cannot be empty!';
     } else{
-      this.statusMessage = 'Successfully saved!';
-
+      this.statusMessage = 'Successfully saved!' + this.priority;
+      this.todoService.addTask(new Task(this.title, this.description, this.priority));
     }
   }
 
-  constructor(private todoService: TodoService) { }
 
-  ngOnInit(): void {
-  }
+
+
 
 }

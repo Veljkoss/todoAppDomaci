@@ -3,7 +3,7 @@
         <div class="container">
             <div class="box">
                 <h3 class="title">New Task</h3>
-                
+
                 <div class="field">
                     <label class="label">Task Title</label>
                     <div class="control">
@@ -22,19 +22,18 @@
                     <label class="label">Priority</label>
                     <div class="control">
                         <div class="select">
-                            <select>
+                            <select [(ngModel)]="priority">
                                 <option *ngFor="let priority of priorities"> {{priority}}</option>
                             </select>
                           </div>
                     </div>
                 </div>
-                
+
                     <button class="button is-link" (click)="onAddTask()">
                         Add Task
                     </button>
                     <span class="tag is-white ml-2" id="status" [innerText]="statusMessage"></span>
-                
-                
+
             </div>
         </div>
     </div>
