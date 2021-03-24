@@ -1,0 +1,41 @@
+<div class="columns is-centered">
+    <div class="column is-half">
+        <div class="container">
+            <div class="box">
+                <h3 class="title">New Task</h3>
+                
+                <div class="field">
+                    <label class="label">Task Title</label>
+                    <div class="control">
+                        <input class="input" type="text" [(ngModel)]="title">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Task Description</label>
+                    <div class="control">
+                        <input class="input" type="text" [(ngModel)]="description">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Priority</label>
+                    <div class="control">
+                        <div class="select">
+                            <select>
+                                <option *ngFor="let priority of priorities"> {{priority}}</option>
+                            </select>
+                          </div>
+                    </div>
+                </div>
+                
+                    <button class="button is-link" (click)="onAddTask()">
+                        Add Task
+                    </button>
+                    <span class="tag is-white ml-2" id="status" [innerText]="statusMessage"></span>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
